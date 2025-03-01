@@ -1,25 +1,22 @@
-'use client';
-import { useState } from 'react';
-import Filters from '@/components/Filters';
-import RepoList from '@/components/RepoList';
+import About from './components/About';
+import CommunitySection from './components/Community';
+import Hero from './components/Hero';
+import HowItWorks from './components/HowItWork';
+import ReachUs from './components/ReachUs';
+import StartToday from './components/StartToday';
+import WhyGitcode from './components/WhyGitcode';
 
-const Dashboard = () => {
-    const [query, setQuery] = useState('');
-    const [language, setLanguage] = useState('');
+export default async function Home() {
 
-    return (
-        <div className="container mx-auto p-4">
-            <h1 className="text-xl font-bold">GitHub Open Source Repos</h1>
-            <input
-                type="text"
-                placeholder="Search repositories..."
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                className="border p-2 w-full mb-4"
-            />
-            <Filters onFilterChange={setLanguage} />
-            <RepoList query={query} language={language} />
-        </div>
-    );
-};
-export default Dashboard;
+  return (
+      <main className="flex min-h-screen flex-col items-center justify-center bg-[#000]">
+        <Hero />
+        <HowItWorks />
+        <About />
+        <WhyGitcode />
+        <CommunitySection />
+        <StartToday />
+        <ReachUs />
+      </main>
+  );
+}
