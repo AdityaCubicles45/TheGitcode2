@@ -1,12 +1,12 @@
 export default function GradientBoxes() {
     return (
       <div className="relative flex flex-col items-center justify-center w-full min-h-screen bg-[#121212] text-white">
-        <h2 className="text-3xl font-bold mb-10">Why GitCode?</h2>
+        <h2 className="text-[42px] font-semibold mb-10">Why GitCode?</h2>
         
         {/* Background Circles */}
         <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-          <div className="absolute w-[60%] h-[60%] border-x-4  border-dotted border-[#765BE1] rounded-full opacity-30"></div>
-          <div className="absolute w-[75%] h-[75%] border-x-4 border-dotted border-[#765BE1] rounded-full opacity-20"></div>
+          <div className="absolute w-[60%] h-[60%] border-x-4 border-dotted border-[#765BE1] rounded-full opacity-30"></div>
+          <div className="absolute w-[75%] h-[75%] border-x-4 border-dotted border-[#765BE1] rounded-full opacity-30"></div>
         </div>
         
         {/* Boxes Grid */}
@@ -21,7 +21,7 @@ export default function GradientBoxes() {
           ].map((box, index) => (
             <div
               key={index}
-              className={`p-6 w-52 h-52 flex items-center justify-center text-center font-semibold text-white text-xl rounded-lg bg-gradient-to-br ${box.gradient}`}
+              className={`p-6 w-56 h-56 flex items-center justify-center text-center font-semibold text-white text-xl rounded-lg bg-gradient-to-br ${box.gradient}`}
             >
               {box.text}
             </div>
