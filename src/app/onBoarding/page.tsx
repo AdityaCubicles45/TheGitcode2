@@ -1,7 +1,8 @@
 "use client";
 
-import router from "next/router";
 import React, { useState } from "react";
+import { useMutation } from "convex/react";
+import { api } from "../../../convex/_generated/api";
 
 const options = ["Development", "Design", "Branding", "Other"];
 
@@ -15,7 +16,11 @@ const ReachUs = () => {
     selectedOption: "Development",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const saveFormData = useMutation(api.reachUs.saveFormData); // Fix: Use correct path
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -23,32 +28,29 @@ const ReachUs = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("YOUR_BACKEND_URL/api/reachus", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+      await saveFormData({
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        company: formData.company,
+        message: formData.message,
+        selectedOption: formData.selectedOption,
+      }); // Pass the form data explicitly
+      alert("Message sent successfully!");
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        company: "",
+        message: "",
+        selectedOption: "Development",
       });
-
-      if (response.ok) {
-        alert("Message sent successfully!");
-        setFormData({
-          firstName: "",
-          lastName: "",
-          email: "",
-          company: "",
-          message: "",
-          selectedOption: "Development",
-        });
-      } else {
-        alert("Something went wrong. Please try again.");
-      }
     } catch (error) {
       console.error("Error:", error);
       alert("Failed to send message.");
     }
   };
+
 
   return (
     <div
@@ -125,21 +127,18 @@ const ReachUs = () => {
               <div className="w-full">
                 <label className="text-white block mb-2">What Can We Help You With?</label>
                 <div className="space-y-2">
-                  {options.map((option) => (
-                    <button
-                      key={option}
-                      type="button"
-                      onClick={() => setFormData({ ...formData, selectedOption: option })}
-                      className={`w-full text-left p-2 rounded-lg border transition-all duration-300
-                        ${
-                          formData.selectedOption === option
-                            ? "bg-white/20 border-white/20 text-white"
-                            : "border-white/20 text-gray-300 bg-white/5"
-                        }`}
+                   <select 
+                      name="selectedOption" 
+                      value={formData.selectedOption} 
+                      onChange={handleChange}
+                      className="w-full p-2 border rounded"
                     >
-                      {option}
-                    </button>
-                  ))}
+                      {options.map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
                 </div>
               </div>
               <div>
@@ -155,8 +154,7 @@ const ReachUs = () => {
                 ></textarea>
               </div>
               <button
-                // type="submit"
-                onClick={() => router.push('/dashboard')}
+                type="submit"
                 className="w-full bg-white text-black p-2 rounded-md font-semibold hover:bg-gray-300 transition"
               >
                 {" Let's Talk "}
@@ -170,3 +168,4 @@ const ReachUs = () => {
 };
 
 export default ReachUs;
+

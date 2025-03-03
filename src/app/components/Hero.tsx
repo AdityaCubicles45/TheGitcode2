@@ -44,31 +44,27 @@ const Hero = () => {
           </p>
 
           {/* Email Button with Hover Effect */}
+          <SignedIn>
+          <Link href="/onBoarding">
           <button
             className="mt-8 sm:mt-12 rounded-full text-white hover:text-white font-medium border hover:border-blue-600 px-6 sm:px-9 py-2 duration-300 hover:bg-blue-600 transition-all shadow-none hover:shadow-[0_0_110px_10px_rgba(255,255,255,0.8)] text-sm sm:text-base relative z-20"
           >
             Start Contributing
           </button>
-
-          <SignedIn>
-          <Link href="/onBoarding">
-            <button className="group relative inline-flex items-center justify-center px-8 py-3.5 text-base font-medium text-white bg-gradient-to-r from-gray-900 to-gray-800 rounded-full hover:from-gray-800 hover:to-gray-700 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
-              Get Started
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-gray-900/20 to-gray-800/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-            </button>
           </Link>
         </SignedIn>
 
         <SignedOut>
           <SignInButton
             mode="modal"
-            fallbackRedirectUrl={"/dashboard"}
-            forceRedirectUrl={"/dashboard"}
+            fallbackRedirectUrl={"/onBoarding"}
+            forceRedirectUrl={"/onBoarding"}
           >
-            <button className="group relative inline-flex items-center justify-center px-8 py-3.5 text-base font-medium text-white bg-gradient-to-r from-gray-900 to-gray-800 rounded-full hover:from-gray-800 hover:to-gray-700 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
-              Sign Up
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-gray-900/20 to-gray-800/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-            </button>
+            <button
+            className="mt-8 sm:mt-12 rounded-full text-white hover:text-white font-medium border hover:border-blue-600 px-6 sm:px-9 py-2 duration-300 hover:bg-blue-600 transition-all shadow-none hover:shadow-[0_0_110px_10px_rgba(255,255,255,0.8)] text-sm sm:text-base relative z-20"
+          >
+            Start Contributing
+          </button>
           </SignInButton>
         </SignedOut>
 
