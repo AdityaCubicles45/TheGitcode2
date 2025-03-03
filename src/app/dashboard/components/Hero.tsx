@@ -1,5 +1,8 @@
 "use client";
 
+import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
+import Link from "next/link";
+
 const Hero = () => {
 
   return (
@@ -46,6 +49,28 @@ const Hero = () => {
           >
             Start Contributing
           </button>
+
+          <SignedIn>
+          <Link href="/onBoarding">
+            <button className="group relative inline-flex items-center justify-center px-8 py-3.5 text-base font-medium text-white bg-gradient-to-r from-gray-900 to-gray-800 rounded-full hover:from-gray-800 hover:to-gray-700 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+              Get Started
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-gray-900/20 to-gray-800/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+            </button>
+          </Link>
+        </SignedIn>
+
+        <SignedOut>
+          <SignInButton
+            mode="modal"
+            fallbackRedirectUrl={"/dashboard"}
+            forceRedirectUrl={"/dashboard"}
+          >
+            <button className="group relative inline-flex items-center justify-center px-8 py-3.5 text-base font-medium text-white bg-gradient-to-r from-gray-900 to-gray-800 rounded-full hover:from-gray-800 hover:to-gray-700 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+              Sign Up
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-gray-900/20 to-gray-800/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+            </button>
+          </SignInButton>
+        </SignedOut>
 
           {/* <div className="mt-14 sm:mt-48 flex flex-col items-center justify-center bg-transparent relative">
             <div className="text-center relative transition-all duration-300">
