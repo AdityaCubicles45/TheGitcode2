@@ -4,7 +4,7 @@ const CommunitySection = () => {
   return (
     <section className="bg-[#121212] h-screen w-full text-white py-16 flex flex-col items-center">
       <h2 className="text-4xl font-bold mb-8">Join the Community</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 h-[75%] max-w-5xl">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 h-[75%] max-w-5xl">
         {/* Developers */}
         <div className="bg-gradient-to-b from-purple-900 to-black p-8 rounded-lg shadow-lg flex flex-col justify-around items-center text-center">
           <h3 className="text-[26px] font-semibold  w-[50%]">For Developers</h3>

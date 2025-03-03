@@ -10,7 +10,7 @@ export default function GradientBoxes() {
         </div>
         
         {/* Boxes Grid */}
-        <div className="relative grid grid-cols-3 gap-4 mb-14 max-w-4xl">
+        <div className="relative grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4 mb-14 max-w-4xl">
           {[
             { text: "Monetized Open-Source", gradient: "from-purple-600 to-indigo-500" },
             { text: "Build Your Developer Identity", gradient: "from-purple-700 to-indigo-600" },
@@ -21,7 +21,7 @@ export default function GradientBoxes() {
           ].map((box, index) => (
             <div
               key={index}
-              className={`p-6 w-56 h-56 flex items-center justify-center text-center font-semibold text-white text-xl rounded-lg bg-gradient-to-br ${box.gradient}`}
+              className={`p-6 w-44 h-44 sm:w-56 sm:h-56 flex items-center justify-center text-center font-semibold text-white text-xl rounded-lg bg-gradient-to-br ${box.gradient}`}
             >
               {box.text}
             </div>

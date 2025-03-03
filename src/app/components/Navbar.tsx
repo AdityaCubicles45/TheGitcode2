@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
+import Link from "next/link";
 
 const Navbar: React.FC = () => {
   const [visible, setVisible] = useState(true);
@@ -23,9 +24,8 @@ const Navbar: React.FC = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, ); // Added lastScrollY to dependency array
+  }, );
 
-  // Close menu on scroll
   useEffect(() => {
     const closeMenuOnScroll = () => {
       if (menuOpen) {
@@ -33,9 +33,9 @@ const Navbar: React.FC = () => {
       }
     };
 
-    window.addEventListener('scroll', closeMenuOnScroll);
+    window.addEventListener("scroll", closeMenuOnScroll);
     return () => {
-      window.removeEventListener('scroll', closeMenuOnScroll);
+      window.removeEventListener("scroll", closeMenuOnScroll);
     };
   }, [menuOpen]);
 
@@ -47,19 +47,23 @@ const Navbar: React.FC = () => {
     >
       <div className="flex items-center justify-between md:justify-center">
         {/* Mobile Hamburger */}
-        <button
-          className="md:hidden text-white bg-[#525252] bg-opacity-70 p-2 rounded-full fixed top-5 right-5 z-50"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          {menuOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+        <div className="flex items-center md:hidden fixed top-5 left-5 gap-3 z-50">
+          <div className="text-white">LOGO</div>
+          <button
+            className="text-white bg-[#525252] bg-opacity-70 p-2 fixed right-5 rounded-full"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
 
-        <div className="flex items-center left-0 text-white fixed gap-3">
-         LOGO
+        {/* Logo - Hidden on mobile */}
+        <div className="hidden md:flex items-center ml-4 left-0 text-white fixed gap-3">
+          LOGO
         </div>
 
         {/* Desktop Navbar */}
-        <div className="hidden md:flex items-center px-4 space-x-4 bg-[#525252] bg-opacity-55 text-white rounded-full shadow-lg">
+        <div className="hidden md:flex items-center space-x-4 bg-[#525252] bg-opacity-55 text-white rounded-full shadow-lg">
           <button className="hover:bg-[#525252] bg-opacity-70 px-4 py-2 rounded-full">
             Platform
           </button>
@@ -71,23 +75,33 @@ const Navbar: React.FC = () => {
           </button>
         </div>
 
-        <div className="flex items-center fixed right-0">
-          <UserButton
-            afterSignOutUrl="/"
-            appearance={{
-              elements: {
-                avatarBox:
-                  "h-8 w-8 ring-2 ring-gray-200/50 ring-offset-2 rounded-full transition-shadow hover:ring-gray-300/50",
-              },
-            }}
-          />
+        {/* Start Contributing Button - Hidden on mobile */}
+        <div className="hidden md:flex mr-4 items-center fixed right-0">
+          <SignedIn>
+            <Link href="/onBoarding">
+              <button className="rounded-full text-white hover:text-white font-medium border px-4 py-1.5 text-sm sm:text-base">
+                Start Contributing
+              </button>
+            </Link>
+          </SignedIn>
+
+          <SignedOut>
+            <SignInButton
+              mode="modal"
+              fallbackRedirectUrl={"/onBoarding"}
+              forceRedirectUrl={"/onBoarding"}
+            >
+              <button className="rounded-full text-white hover:text-white font-medium border px-4 py-1.5 text-sm sm:text-base">
+                Start Contributing
+              </button>
+            </SignInButton>
+          </SignedOut>
         </div>
       </div>
 
       {/* Mobile Menu Overlay */}
       {menuOpen && (
         <div className="z-50">
-          
           {/* Left half with transparent blur */}
           <div className="w-1/2 h-screen bg-black bg-opacity-40 backdrop-blur-md p-6 flex flex-col space-y-4 text-white">
             <button className="hover:bg-[#525252] bg-opacity-70 px-4 py-2 rounded-md">
@@ -99,13 +113,30 @@ const Navbar: React.FC = () => {
             <button className="hover:bg-[#525252] bg-opacity-70 px-4 py-2 rounded-md">
               About
             </button>
+
+            <SignedIn>
+              <Link href="/onBoarding">
+                <button className="hover:bg-[#525252] bg-opacity-70 px-4 py-2 rounded-md">
+                  Start Contributing
+                </button>
+              </Link>
+            </SignedIn>
+
+            <SignedOut>
+              <SignInButton
+                mode="modal"
+                fallbackRedirectUrl={"/onBoarding"}
+                forceRedirectUrl={"/onBoarding"}
+              >
+                <button className="hover:bg-[#525252] bg-opacity-70 px-4 py-2 rounded-md">
+                  Start Contributing
+                </button>
+              </SignInButton>
+            </SignedOut>
           </div>
 
           {/* Right half fully transparent */}
-          <div
-            className="w-1/2 h-screen"
-            onClick={() => setMenuOpen(false)}
-          ></div>
+          <div className="w-1/2 h-screen" onClick={() => setMenuOpen(false)}></div>
         </div>
       )}
     </div>

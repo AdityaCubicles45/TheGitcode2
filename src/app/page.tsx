@@ -8,10 +8,11 @@ import HowItWorks from './components/HowItWork';
 import StartToday from './components/StartToday';
 import WhyGitcode from './components/WhyGitcode';
 
+
 export default async function Home() {
 
   return (
-      <main className="flex min-h-screen flex-col items-center justify-center bg-[#000]">
+      <main className="bg-[#000]">
         <Navbar />
         <Hero />
         <HowItWorks />

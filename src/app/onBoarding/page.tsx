@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { useMutation } from "convex/react";
+import { useRouter } from "next/navigation"; // Import useRouter for navigation
 import { api } from "../../../convex/_generated/api";
 
 const options = ["Development", "Design", "Branding", "Other"];
@@ -16,7 +17,8 @@ const ReachUs = () => {
     selectedOption: "Development",
   });
 
-  const saveFormData = useMutation(api.reachUs.saveFormData); // Fix: Use correct path
+  const saveFormData = useMutation(api.reachUs.saveFormData); 
+  const router = useRouter(); // Initialize the router
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -35,7 +37,8 @@ const ReachUs = () => {
         company: formData.company,
         message: formData.message,
         selectedOption: formData.selectedOption,
-      }); // Pass the form data explicitly
+      });
+
       alert("Message sent successfully!");
       setFormData({
         firstName: "",
@@ -45,12 +48,13 @@ const ReachUs = () => {
         message: "",
         selectedOption: "Development",
       });
+
+      router.push("/dashboard"); // Redirect after successful submission
     } catch (error) {
       console.error("Error:", error);
       alert("Failed to send message.");
     }
   };
-
 
   return (
     <div
@@ -70,7 +74,7 @@ const ReachUs = () => {
               Have an idea, a project, or just want to collaborate?
             </p>
             <p className="text-xl text-white/60">
-             {" We're here to turn possibilities into reality. Let's explore how we can engineer your vision into something extraordinary."}
+              {" We're here to turn possibilities into reality. Let's explore how we can engineer your vision into something extraordinary."}
             </p>
           </div>
           <div className="w-auto sm:w-1/2 px-14 sm:px-2">
@@ -127,18 +131,18 @@ const ReachUs = () => {
               <div className="w-full">
                 <label className="text-white block mb-2">What Can We Help You With?</label>
                 <div className="space-y-2">
-                   <select 
-                      name="selectedOption" 
-                      value={formData.selectedOption} 
-                      onChange={handleChange}
-                      className="w-full p-2 border rounded"
-                    >
-                      {options.map((option) => (
-                        <option key={option} value={option}>
-                          {option}
-                        </option>
-                      ))}
-                    </select>
+                  <select
+                    name="selectedOption"
+                    value={formData.selectedOption}
+                    onChange={handleChange}
+                    className="w-full p-2 border rounded"
+                  >
+                    {options.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
               <div>
@@ -168,4 +172,3 @@ const ReachUs = () => {
 };
 
 export default ReachUs;
-
