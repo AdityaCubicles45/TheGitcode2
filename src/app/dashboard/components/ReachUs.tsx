@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+import { useMutation } from "convex/react";
+import { api } from "../../../../convex/_generated/api";
 
 const options = ["Development", "Design", "Branding", "Other"];
 
@@ -14,7 +16,11 @@ const ReachUs = () => {
     selectedOption: "Development",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const saveFormData = useMutation(api.reachUs.saveFormData); // Fix: Use correct path
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -22,32 +28,29 @@ const ReachUs = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("YOUR_BACKEND_URL/api/reachus", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+      await saveFormData({
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        company: formData.company,
+        message: formData.message,
+        selectedOption: formData.selectedOption,
+      }); // Pass the form data explicitly
+      alert("Message sent successfully!");
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        company: "",
+        message: "",
+        selectedOption: "Development",
       });
-
-      if (response.ok) {
-        alert("Message sent successfully!");
-        setFormData({
-          firstName: "",
-          lastName: "",
-          email: "",
-          company: "",
-          message: "",
-          selectedOption: "Development",
-        });
-      } else {
-        alert("Something went wrong. Please try again.");
-      }
     } catch (error) {
       console.error("Error:", error);
       alert("Failed to send message.");
     }
   };
+
 
   return (
     <div
@@ -124,21 +127,18 @@ const ReachUs = () => {
               <div className="w-full">
                 <label className="text-white block mb-2">What Can We Help You With?</label>
                 <div className="space-y-2">
-                  {options.map((option) => (
-                    <button
-                      key={option}
-                      type="button"
-                      onClick={() => setFormData({ ...formData, selectedOption: option })}
-                      className={`w-full text-left p-2 rounded-lg border transition-all duration-300
-                        ${
-                          formData.selectedOption === option
-                            ? "bg-white/20 border-white/20 text-white"
-                            : "border-white/20 text-gray-300 bg-white/5"
-                        }`}
+                   <select 
+                      name="selectedOption" 
+                      value={formData.selectedOption} 
+                      onChange={handleChange}
+                      className="w-full p-2 border rounded"
                     >
-                      {option}
-                    </button>
-                  ))}
+                      {options.map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
                 </div>
               </div>
               <div>
@@ -168,3 +168,90 @@ const ReachUs = () => {
 };
 
 export default ReachUs;
+
+
+
+
+
+// "use client";
+
+// import React, { useState } from "react";
+// import { useMutation } from "convex/react";
+// import { api } from "../../../../convex/_generated/api"; // Adjust path if needed
+
+// const options = ["Development", "Design", "Branding", "Other"];
+
+// const ReachUs = () => {
+//   const [formData, setFormData] = useState({
+//     firstName: "",
+//     lastName: "",
+//     email: "",
+//     company: "",
+//     message: "",
+//     selectedOption: "Development",
+//   });
+
+//   const saveFormData = useMutation(api.reachUs.saveFormData); // Fix: Use correct path
+
+//   const handleChange = (
+//     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+//   ) => {
+//     setFormData({ ...formData, [e.target.name]: e.target.value });
+//   };
+
+//   const handleSubmit = async (e: React.FormEvent) => {
+//     e.preventDefault();
+
+//     try {
+//       await saveFormData({
+//         firstName: formData.firstName,
+//         lastName: formData.lastName,
+//         email: formData.email,
+//         company: formData.company,
+//         message: formData.message,
+//         selectedOption: formData.selectedOption,
+//       }); // Pass the form data explicitly
+//       alert("Message sent successfully!");
+//       setFormData({
+//         firstName: "",
+//         lastName: "",
+//         email: "",
+//         company: "",
+//         message: "",
+//         selectedOption: "Development",
+//       });
+//     } catch (error) {
+//       console.error("Error:", error);
+//       alert("Failed to send message.");
+//     }
+//   };
+
+//   return (
+//     <div className="py-48 flex justify-center bg-[#121212]">
+//       <form onSubmit={handleSubmit} className="w-full max-w-lg space-y-6 bg-white p-6 rounded-lg">
+//         <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="First Name" required />
+//         <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Last Name" required />
+//         <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="name@name.com" required />
+//         <input type="text" name="company" value={formData.company} onChange={handleChange} placeholder="Your Company" />
+//         <textarea name="message" value={formData.message} onChange={handleChange} placeholder="Message" required />
+//         <select 
+//           name="selectedOption" 
+//           value={formData.selectedOption} 
+//           onChange={handleChange}
+//           className="w-full p-2 border rounded"
+//         >
+//           {options.map((option) => (
+//             <option key={option} value={option}>
+//               {option}
+//             </option>
+//           ))}
+//         </select>
+//         <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">
+//           Let's Talk
+//         </button>
+//       </form>
+//     </div>
+//   );
+// };
+
+// export default ReachUs;
