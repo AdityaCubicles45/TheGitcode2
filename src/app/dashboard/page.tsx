@@ -1,7 +1,8 @@
 'use client';
 import { useState } from 'react';
-import Filters from '@/components/Filters';
-import RepoList from '@/components/RepoList';
+import Filters from './components/Filters';
+import RepoList from './components/RepoList';
+
 
 const Dashboard = () => {
     const [query, setQuery] = useState('');
