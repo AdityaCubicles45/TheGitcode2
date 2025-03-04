@@ -6,12 +6,15 @@ export const saveFormData = mutation({
     firstName: v.string(),
     lastName: v.string(),
     email: v.string(),
-    company: v.string(),
-    message: v.string(),
-    selectedOption: v.string(),
+    experience: v.string(), // Storing years of experience as a number
+    github: v.string(),
+    twitter: v.string(),
+    linkedin: v.string(),
+    portfolio: v.string(),
+    walletAddress: v.string(),
   },
   handler: async (ctx, args) => {
     // Change table name to formSubmissions
-    await ctx.db.insert("formSubmissions", args);
+    await ctx.db.insert("users", args);
   },
 });
