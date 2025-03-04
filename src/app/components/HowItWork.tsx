@@ -20,9 +20,9 @@ const HowItWorks = () => {
       </div>
 
       {/* Steps */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-14 h-[67%] max-w-5xl relative z-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-14 h-[67%] bg-[#121212] bg-opacity-70 max-w-5xl relative z-10">
         {/* Step 1 */}
-        <div className="bg-gradient-to-b from-gray-900 to-black p-8 rounded-full border border-white/10 shadow-lg flex flex-col items-center justify-around text-center w-56">
+        <div className="bg-gradient-to-b from-black via-white/5 to-[#514EF8BD] p-8 rounded-full border border-white/10 flex flex-col items-center justify-around text-center w-56">
           <div className="w-[80%]">
             <h3 className="text-[22px]">Discover open-source projects.</h3>
           </div>
@@ -30,7 +30,7 @@ const HowItWorks = () => {
         </div>
 
         {/* Step 2 */}
-        <div className="bg-gradient-to-b from-gray-900 to-black p-8 rounded-full border border-white/10 shadow-lg flex flex-col items-center justify-around text-center w-56">
+        <div className="bg-gradient-to-b from-[#58327C] via-white/5 to-white/5 p-8 rounded-full border border-white/10 shadow-lg flex flex-col items-center justify-around text-center w-56">
           <Image src="/landingPage/Group.svg" height={200} width={200} alt="Ellipse" className="" />
           <div className="w-[80%]">
             <h3 className="text-[22px] ">Contribute meaningful code.</h3>
@@ -38,7 +38,7 @@ const HowItWorks = () => {
         </div>
 
         {/* Step 3 */}
-        <div className="bg-gradient-to-b from-gray-900 to-black p-8 rounded-full border border-white/10 shadow-lg flex flex-col items-center justify-around text-center w-56">
+        <div className="bg-gradient-to-b from-black via-white/5 to-[#F28074BD] p-8 rounded-full border border-white/10 shadow-lg flex flex-col items-center justify-around text-center w-56">
           <div className="w-[80%]">
             <h3 className="text-[22px]">Earn rewards based on your impact</h3>
           </div>
