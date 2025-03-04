@@ -2,7 +2,7 @@ import React from 'react'
 
 const StartToday = () => {
   return (
-    <div className='h-screen w-full flex flex-col justify-center text-white items-center bg-[#121212]'>
+    <div className=' h-screen sm:h-auto lg:h-screen w-full flex flex-col justify-center text-white items-center bg-[#121212]'>
         <div className=' py-10 font-semibold text-[40px] mb-4'>
             <h1>
             Start Contributing Today!
