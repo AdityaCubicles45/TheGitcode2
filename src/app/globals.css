@@ -1,7 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Sequel+Sans:wght@400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 
 @layer base {
@@ -119,3 +120,19 @@
     @apply bg-background text-foreground;
   }
 }
+
+@font-face {
+  font-family: 'Songti';
+  src: url('/fonts/songti-tc-regular.ttf') format('truetype'),
+       url('/fonts/songti-tc-regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@layer utilities {
+  .font-songti {
+    font-family: 'Songti', serif;
+  }
+}
+
+

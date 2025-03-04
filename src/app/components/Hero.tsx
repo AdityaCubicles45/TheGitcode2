@@ -21,14 +21,14 @@ const Hero = () => {
         <div className="py-16 sm:py-32 md:py-44 flex flex-col items-center px-6 sm:px-12 relative z-10">
           
           {/* Hero Text */}
-          <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-[95px] text-center mt-4">
+          <h1 className="text-white text-3xl font-songti sm:text-4xl md:text-5xl lg:text-[95px] text-center mt-4">
             Contribute.
           </h1>
           
           {/* Subheading with Glow */}
           <div className="w-[100%]">
             <h1
-              className="text-center mt-4 font-bold font-sequel text-white/80 text-[36px] sm:text-5xl md:text-5xl lg:text-[110px] leading-tight sm:leading-[1.2] transition-all duration-300 hover:text-white/50 ease-in"
+              className="text-center mt-4 font-semibold font-sequel text-white/80 text-[36px] sm:text-5xl md:text-5xl lg:text-[110px] leading-tight sm:leading-[1.2] transition-all duration-300 hover:text-white/50 ease-in"
               >
               Earn. Elevate.
             </h1>
