@@ -92,11 +92,11 @@ const ReachUs = () => {
       <div className="py-48 sm:py-0 h-screen justify-center items-center flex">
         <div className="gap-14 flex flex-col sm:flex-row justify-center items-center rounded-xl px-0 sm:px-14 lg:px-0 w-full max-w-4xl">
           <div className="w-auto sm:w-1/2 px-14 sm:px-0 py-20 pr-6 space-y-6 sm:pr-20">
-            <div className="mb-20">
-              <h2 className="text-4xl font-semibold text-white mb-6">Fill your details</h2>
-              <p className="text-xl text-white/70 mb-6">
+            <div className="mb-16 flex flex-col">
+              <i className="text-4xl font-semibold text-white mb-6">Fill your details</i>
+              <i className="text-xl text-white/70 mb-6">
                 Join the network of open-source innovators
-              </p>
+              </i>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
@@ -107,7 +107,7 @@ const ReachUs = () => {
                   value={formData.firstName}
                   onChange={handleInputChange}
                   placeholder="First Name"
-                  className="w-full p-2 text-white bg-white/15 rounded-md focus:outline-none"
+                  className="w-full p-2 text-white  rounded-md bg-gradient-to-r from-[rgba(70,48,104)] to-[rgba(163,103,228)] focus:outline-none"
                   required
                 />
               </div>
@@ -119,7 +119,7 @@ const ReachUs = () => {
                   value={formData.lastName}
                   onChange={handleInputChange}
                   placeholder="Last Name"
-                  className="w-full p-2 bg-white/5 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600"
+                  className="w-full p-2 bg-gradient-to-r from-[rgba(70,48,104)] to-[rgba(163,103,228)] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600"
                   required
                 />
               </div>
@@ -132,7 +132,7 @@ const ReachUs = () => {
                 value={formData.email}
                 onChange={handleInputChange}
                 placeholder="name@name.com"
-                className="w-full p-2 bg-white/5 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600"
+                className="w-full p-2 bg-gradient-to-r from-[rgba(70,48,104)] to-[rgba(163,103,228)] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600"
                 required
               />
             </div>
@@ -144,7 +144,7 @@ const ReachUs = () => {
                 onChange={handleInputChange}
                 placeholder="Past-Project/ Experience"
                 rows={2}
-                className="w-full p-3 bg-white/5 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600"
+                className="w-full p-3 bg-gradient-to-r from-[rgba(70,48,104)] to-[rgba(163,103,228)] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600"
                 required
               ></textarea>
             </div>
@@ -159,7 +159,7 @@ const ReachUs = () => {
                   value={formData.github}
                   onChange={handleInputChange}
                   placeholder="github.com/ username"
-                  className="w-full p-2 bg-white/5 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600"
+                  className="w-full p-2 bg-gradient-to-r from-[rgba(96,51,94)] to-[rgba(170,65,87)]   text-white rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600"
                 />
               </div>
               <div>
@@ -170,7 +170,7 @@ const ReachUs = () => {
                   value={formData.twitter}
                   onChange={handleInputChange}
                   placeholder="x.com/ username"
-                  className="w-full p-2 bg-white/5 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600"
+                  className="w-full p-2 bg-gradient-to-r from-[rgba(96,51,94)] to-[rgba(170,65,87)]   text-white rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600"
                 />
               </div>
               <div>
@@ -181,7 +181,7 @@ const ReachUs = () => {
                   value={formData.linkedin}
                   onChange={handleInputChange}
                   placeholder="www.linkedin.com/in/ username"
-                  className="w-full p-2 bg-white/5 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600"
+                  className="w-full p-2 bg-gradient-to-r from-[rgba(96,51,94)] to-[rgba(170,65,87)]   text-white rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600"
                 />
               </div>
               <div>
@@ -192,7 +192,7 @@ const ReachUs = () => {
                   value={formData.portfolio}
                   onChange={handleInputChange}
                   placeholder="your link"
-                  className="w-full p-2 bg-white/5 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600"
+                  className="w-full p-2 bg-gradient-to-r from-[rgba(96,51,94)] to-[rgba(170,65,87)]   text-white rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600"
                 />
               </div>
               <div>
@@ -203,12 +203,12 @@ const ReachUs = () => {
                   value={formData.walletAddress}
                   onChange={handleInputChange}
                   placeholder="0x"
-                  className="w-full p-2 bg-white/5 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600"
+                  className="w-full p-2 text-white bg-gradient-to-r from-[rgba(96,51,94)] to-[rgba(170,65,87)]  rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600"
                 />
               </div>
               <button
                 type="submit"
-                className="w-full bg-white text-black p-2 rounded-md font-semibold hover:bg-gray-300 transition"
+                className="w-full bg-opacity-20 border-2 border-gray-600 text-white p-2 rounded-full font-semibold hover:bg-gray-500 hover:bg-opacity-50 transition"
               >
                 Continue
               </button>
