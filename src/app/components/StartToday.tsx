@@ -21,7 +21,7 @@ const StartToday = () => {
 
         <button
         className="mt-8 sm:mt-12 rounded-full text-white hover:text-black font-medium px-6 sm:px-9 py-2 duration-300 hover:bg-white bg-blue-600 text-sm sm:text-base relative z-20"
-        onClick={() => router.push('/')} // Redirects to the landing page
+        onClick={() => router.push('/onBoarding')} // Redirects to the landing page
 
         >
         Start Contributing
