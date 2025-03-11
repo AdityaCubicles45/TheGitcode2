@@ -59,7 +59,7 @@ const Navbar: React.FC = () => {
 
         {/* Logo - Hidden on mobile */}
         <div className="hidden md:flex items-center ml-4 left-0 text-white fixed gap-3">
-          LOGO
+          GITCODE
         </div>
 
         {/* Desktop Navbar */}
