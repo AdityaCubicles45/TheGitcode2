@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const HowItWorks = () => {
   return (
-    <section className="relative bg-[#121212] text-white py-12 flex flex-col h-screen w-full items-center">
+    <section className="relative bg-[#121212] text-white py-12 flex flex-col h-[140vh] sm:h-screen  w-full items-center">
       <h2 className="text-[40px] font-semibold mb-16">How It Works</h2>
 
       {/* Dotted Wave Line */}
