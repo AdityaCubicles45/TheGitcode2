@@ -69,7 +69,7 @@ const ReachUs = () => {
         backgroundSize: "cover",
       }}
     >
-      <div className="py-48 sm:py-0 h-screen justify-center items-center flex">
+      <div className="py-48 sm:py-0 sm:h-screen h-auto justify-center items-center flex">
         <div className="gap-14 flex flex-col sm:flex-row justify-center items-center rounded-xl px-0 sm:px-14 lg:px-0 w-full max-w-4xl">
           <div className="w-auto sm:w-1/2 px-14 sm:px-0 py-20 pr-6 space-y-6 sm:pr-20">
             <div className="mb-16 flex flex-col">
