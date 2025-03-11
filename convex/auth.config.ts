@@ -1,7 +1,7 @@
 export default {
     providers: [
       {
-        domain: (process.env.CLERK_ISSUER_URL),
+        domain: "https://gentle-tetra-91.clerk.accounts.dev",
         applicationID: "convex",
       },
     ]
