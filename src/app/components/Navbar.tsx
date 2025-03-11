@@ -48,7 +48,7 @@ const Navbar: React.FC = () => {
       <div className="flex items-center justify-between md:justify-center">
         {/* Mobile Hamburger */}
         <div className="flex items-center md:hidden fixed top-5 left-5 gap-3 z-50">
-          <div className="text-white">LOGO</div>
+          <div className="text-white">GITCODE</div>
           <button
             className="text-white bg-[#525252] bg-opacity-70 p-2 fixed right-5 rounded-full"
             onClick={() => setMenuOpen(!menuOpen)}
